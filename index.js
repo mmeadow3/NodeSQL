@@ -16,4 +16,18 @@ db.serialize(() => {
         })
     })
     ////////////if we run "node index.js" we get returned an array of objects
+
+db.serialize(() => {
+    db.all(`
+    SELECT Customer.FirstName || ' ' || Customer.LastName AS 'Name',
+           Customer.CustomerId,
+           Customer.Country
+    FROM   Customer
+    WHERE  Customer.Country IS "Brazil"
+  `, (err, customers) => {
+        customers.forEach(({ CustomerId, Name, Country }) => {
+            console.log(`${CustomerId}: ${Name} ${Country}`)
+        })
+    })
+})
 db.close()
