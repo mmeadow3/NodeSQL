@@ -5,6 +5,7 @@ const Table = require('cli-table')
 
 const db = new Database('db/Chinook_Sqlite.sqlite')
 
+///////////old sqlite code/////////////
 db.serialize(() => {
 
     // 1. Provide a query showing Customers (just their full names, customer ID and country) who are not in the US.
@@ -89,3 +90,4 @@ db.serialize(() => {
 })
 
 db.close()
+/////////////////////////////////
